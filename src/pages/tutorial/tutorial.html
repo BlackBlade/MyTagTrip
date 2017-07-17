@@ -1,0 +1,32 @@
+<ion-header no-shadow>
+  <ion-toolbar>
+    <ion-buttons end *ngIf="showSkip">
+      <button ion-button (click)="startApp()" color="primary">SKIP</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <ion-slides pager="true" (ionWillChange)="onSlideChangeStart($event)">
+    <ion-slide *ngFor="let slide of slides">
+      <img [src]="slide.image" class="slide-image" />
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/img/travel.png" class="slide-image" />
+      <h2 class="slide-title">Ready to go?</h2>
+      <p>Join the community and start your journey</p>   
+      <button ion-button icon-right large clear (click)="startApp()">
+        START
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+  
+<ion-footer class = "myFooter">
+  <ion-toolbar>
+    <ion-title>Icons made by Freepik from www.flaticon.com  </ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-toolbar>
+    <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Search Point of interest</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+  <h3>Search the city: </h3>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+  <ion-item *ngFor="let city of cityList" (click)="openPage(city)">
+    <h2> {{ city.name }} </h2>
+    <h3> <!-- immagine del point of interest --> </h3>
+  </ion-item>
+</ion-list>
+</ion-content>
