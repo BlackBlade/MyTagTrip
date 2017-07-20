@@ -19,13 +19,17 @@ declare var google: any;
 })
 export class ChoosetagsPage {
 
-  selectedItems: Set<String>;
-
+  public selectedItems: Set<String>;
+  public poiToAdd: Set<String>; //nome dei punti di interesse da mettere come waypoints
   public cityname: any;
   public loader: Loading;
   public tagList:Array<any>;
+  public keyList: Array<any>;
   public loadedTagList:Array<any>;
   public tagRef:firebase.database.Reference;
+  public poisRef:firebase.database.Reference;
+  public poisList:Array<any>;
+  public poiSnapshot:Array<any>;
   city:any;
   userCurrentPosition : LatLng;
 
@@ -33,29 +37,48 @@ export class ChoosetagsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items, public loading: LoadingController
   ,public toastCtrl: ToastController) {
 
-   this.loader = loading.create({
-      content: 'Calculating route...',
-      dismissOnPageChange: true
-    });
+    this.loader = loading.create({
+       content: 'Calculating route...',
+       dismissOnPageChange: true
+     });
 
-    this.selectedItems = new Set<String>();
-    this.city = navParams.get('reference')
-    this.cityname = this.city.name
-    this.userCurrentPosition = navParams.get('coordinates')
+     this.poiToAdd = new Set<String>();
+     this.selectedItems = new Set<String>();
+     this.city = navParams.get('reference')
+     this.cityname = this.city.name
+     this.userCurrentPosition = navParams.get('coordinates')
+     let pois = [];
+     let poisKey = [];
+     let poissSnapshot = [];
+     this.poisRef = firebase.database().ref('pois/'); //prendo i punti di interesse
 
-    let tags = [];
-    let keys = [];
-    this.tagRef = firebase.database().ref('tags/');
+     this.poisRef.orderByChild("cityName").equalTo(this.cityname).on("child_added", function(snapshot) {
+       //var poif = snapshot.val();
+       //var poiKey = snapshot.key;
 
-    this.tagRef.on("child_added", function(snapshot) {
-      var tag = snapshot.val();
-      keys.push(snapshot.key);
-      tags.push(tag);
-    });
+        //keys.push(snapshot.key);
+         if (snapshot.child("cityName").val()== navParams.get('reference').name){
+           //pois.push(poif);
+           //poisKey.push(poiKey);
+           poissSnapshot.push(snapshot);
+         }
+     });
+     this.poisList = pois; //i punti di interesse per la città scelta
+     this.keyList = poisKey; //le chiavi dei punti di interesse di sopra
+     this.poiSnapshot = poissSnapshot; //gli snapshot
+     let tags = [];
+     let keys = [];
+     this.tagRef = firebase.database().ref('tags/');
 
-  this.keyss = keys;
-  this.tagList = tags;
-  this.loadedTagList = tags;
+     this.tagRef.on("child_added", function(snapshot) {
+       var tag = snapshot.val();
+       keys.push(snapshot.key);
+       tags.push(tag);
+     });
+
+   this.keyss = keys; //chiavi tags
+   this.tagList = tags;
+   this.loadedTagList = tags;
 
   }
 
@@ -65,48 +88,38 @@ export class ChoosetagsPage {
 
 calculatePath(){
 
+  this.searchWayPoints();//ricerca
   var directionsService = new google.maps.DirectionsService();
   var waypts = []
-  waypts.push({
-    location: 'Conad Romagna, Viale Carpi, Riccione, RN',
-    stopover: true
-  })
-  waypts.push({
-    location: 'Prodet, Viale Carpi, Riccione, RN',
-    stopover: true
-  })
-  var request ={
-    origin: {lat: 44.007193, lng: 12.6500083},
-    destination: {lat: 44.007193, lng: 12.6500083},
-    travelMode: google.maps.TravelMode.WALKING ,
-    waypoints : waypts,
-    optimizeWaypoints: true,
-  };
+  for (let poi of Array.from(this.poiToAdd)){
+    waypts.push({
+      location: ''+poi+' ' +this.cityname+'',
+      stopover:true
+    })
+  }
 
-  this.navCtrl.setRoot(TagTripPage, {route:request}, {
+
+  this.navCtrl.setRoot(TagTripPage, {route:waypts, userPosition:this.userCurrentPosition}, {
         animate: true,
         direction: 'forward'
     });
-  /*this.loader.present().then(() => {
-    var self = this
-    })
-    var self = this
-    directionsService.route(request, function(result, status) {
-    self.loader.dismiss()
-      if (status == 'OK') {
+}
 
-          self.navCtrl.setRoot(TagTripPage, {route: result}, {
-          animate: true,
-          direction: 'forward'
-      });
-      } else {
-       this.displayError(status.string)
+searchWayPoints(){
+  let scopeSelected = new Set<String>();
+  let scopePoiToAdd = new Set<String>();
+  scopeSelected = this.selectedItems
+  for(let poi of this.poiSnapshot){
+    poi.child('tags').forEach(function(tagSnapshot){//ciclo sui tag
+      if(scopeSelected.has(tagSnapshot.key)){
+          if(!scopePoiToAdd.has(poi.val().name)){
+            scopePoiToAdd.add(poi.val().name);
+          }
       }
-    });*/
+    })
+  }
 
-
-
-
+  this.poiToAdd = scopePoiToAdd;
 }
 
   selectTag(index:any){
@@ -117,6 +130,8 @@ calculatePath(){
       this.selectedItems.add(key)
     }
   }
+
+
 getItems(searchbar) {
   // Reset items back to all of the items
   this.initializeItems();
