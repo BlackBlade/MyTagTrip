@@ -17,15 +17,6 @@
         <ion-input type="email" [(ngModel)]="email" formControlName="email"></ion-input>
       </ion-item>
 
-      <!--
-      Want to use a Username instead of an Email? Here you go:
-
-      <ion-item>
-        <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.username"></ion-input>
-      </ion-item>
-      -->
-
       <ion-item>
         <ion-label fixed>Password</ion-label>
         <ion-input type="password" [(ngModel)]="password" formControlName="password"></ion-input>
@@ -40,6 +31,6 @@
   </form>
 
   <div padding>
-    <button ion-button color="primary" block (click)="doLogin()">Login with Google</button>
+    <button  *ngIf="showGoogleBtn" ion-button color="primary" block (click)="doLogin()">Login with Google</button>
   </div>
 </ion-content>

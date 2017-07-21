@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, MenuController } from 'ionic-angular';
+import { NavController, ToastController, MenuController, Platform } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MainPage } from '../../pages/pages';
-import { MapPage } from '../map/map';
 import { TagTripPage } from "../tagtrip/tagtrip";
 import { User } from '../../providers/user';
 import { Api } from '../../providers/api';
 
-import { TranslateService } from '@ngx-translate/core';
 
 import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
@@ -29,16 +26,21 @@ export class LoginPage {
   signInForm: FormGroup;
   email: any;
   password:any;
-
+ showGoogleBtn:boolean;
   private loginErrorString: string;
 
   constructor(public navCtrl: NavController,
     public toastCtrl: ToastController,
-    public translateService: TranslateService,
     public api : Api,
     public menuCtrl: MenuController,
-    public formBuilder: FormBuilder) {
+    public formBuilder: FormBuilder,
+    public platform:Platform) {
 
+      if(this.platform.is('core')){
+        this.showGoogleBtn = true;
+      } else {
+        this.showGoogleBtn = false;
+      }
   this.signInForm = formBuilder.group({
     password: ['', Validators.required],
     email:['', Validators.required]

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams,ToastController } from 'ionic-angular';
 import { LoadingController, Loading } from 'ionic-angular';
 
-import { ItemDetailPage } from '../item-detail/item-detail';
+//import { ItemDetailPage } from '../item-detail/item-detail';
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, LatLng, CameraPosition,MarkerOptions, Marker } from '@ionic-native/google-maps';
 
 import {TagTripPage} from '../tagtrip/tagtrip'

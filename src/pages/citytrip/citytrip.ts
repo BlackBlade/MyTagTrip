@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {App, NavController, NavParams, MenuController } from 'ionic-angular';
 
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, LatLng, CameraPosition,MarkerOptions, Marker } from '@ionic-native/google-maps';
-import { ItemDetailPage } from '../item-detail/item-detail';
+//import { ItemDetailPage } from '../item-detail/item-detail';
 import { ChoosetagsPage } from '../choosetags/choosetags';
 import { Item } from '../../models/item';
 import { PoiPage } from "../poi/poi";
@@ -17,7 +17,7 @@ export class CitytripPage {
 
   currentItems: any = [];
   userCurrentPosition: LatLng;
-
+ 
   public cityList:Array<any>;
   public loadedCityList:Array<any>;
   public cityRef:firebase.database.Reference;

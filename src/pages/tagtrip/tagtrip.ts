@@ -24,11 +24,14 @@ export class TagTripPage {
   directionsService = new google.maps.DirectionsService();
   directionsDisplay = new google.maps.DirectionsRenderer();
 
-  start = 'Piazza del popolo cesena';
-  end = 'Rocca malatestiana cesena';
   constructor(public _app: App , private googleMaps: GoogleMaps, public navCtrl: NavController, public platform: Platform,
   public menuCtrl : MenuController, public api:Api, public toastCtrl: ToastController,private geolocation: Geolocation,public navParams: NavParams) {
-        this.username = api.user.displayName
+        
+        if(api.user.displayName==null){
+            this.username = '';
+        }else {
+            this.username = api.user.displayName
+        }      
         this.directions = navParams.get('route')
         this.userCurrentPosition = navParams.get('userPosition')
   }
@@ -77,14 +80,19 @@ ionViewDidEnter() {
           })
           marker.setMap(this.map)
         }).catch((error) => {
-          this.displayMapError(error.message)
+          this.displayMapError('Cannot find location. Turn on GPS to use Tag Trip services!')
         });
         this.userCurrentPosition = currentPosition;
     } else {
-
       this.title = "Enjoy your route!"
+      if (this.userCurrentPosition==null){
+        this.displayMapError('Cannot find location. Turn on GPS to use Tag Trip services!')
+      } else {
       this.directionsDisplay.setMap(this.map)
       this.calculateAndDisplayRoute();
+      }
+      
+      
     }
 }
 

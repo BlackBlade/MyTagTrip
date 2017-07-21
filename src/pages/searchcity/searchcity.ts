@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
 
-import { ItemDetailPage } from '../item-detail/item-detail';
+//import { ItemDetailPage } from '../item-detail/item-detail';
 import { SearchpoiPage } from "../searchpoi/searchpoi";
 import { Item } from '../../models/item';
 import { PoiPage } from "../poi/poi";
