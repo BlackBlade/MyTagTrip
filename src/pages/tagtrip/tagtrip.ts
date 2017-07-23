@@ -98,6 +98,9 @@ ionViewDidEnter() {
 
 calculateAndDisplayRoute() {
 
+    if(this.directions.length == 0){
+      this.displayMapError('Sorry, there are no places tagged with the tags you\'ve chosen! Why don\'t you add one yourself?')
+    }
     this.directionsService.route({
       origin: this.userCurrentPosition,
       destination: this.userCurrentPosition,
