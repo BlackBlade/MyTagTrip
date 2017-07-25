@@ -10,11 +10,6 @@
 
 <ion-content>
   <h3> Pack your bag, hurry up and start your trip through tags! </h3>
-  <ion-card *ngIf="trip" >
-        <ion-card-content>
-            <div #directionsPanel></div>
-        </ion-card-content>
-    </ion-card>
   <div #map id="map"></div>
   <div padding>
     <button  ion-button color="primary" block (click)='planTrip()'> Plan your Trip </button>

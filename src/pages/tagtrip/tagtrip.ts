@@ -17,10 +17,8 @@ declare var google: any;
 export class TagTripPage {
   username:any;
    @ViewChild('map') mapElement: ElementRef;
-   @ViewChild('directionsPanel') directionsPanel: ElementRef;
    map: any;
    title: string;
-   trip: boolean;
   public userCurrentPosition: LatLng;
   directions= [];
   directionsService = new google.maps.DirectionsService();
@@ -44,6 +42,7 @@ export class TagTripPage {
     this.initMap()
   }
 
+
 ionViewDidEnter() {
     this._app.setTitle("Home")
   }
@@ -63,7 +62,6 @@ ionViewDidEnter() {
 
     if(this.directions == null){
       this.title = "Welcome " + this.username + " to My Tag trip!"
-      this.trip = false;
       let currentPosition: LatLng;
         this.geolocation.getCurrentPosition().then((resp) => {
            currentPosition = new LatLng(resp.coords.latitude, resp.coords.longitude);
@@ -90,7 +88,6 @@ ionViewDidEnter() {
       if (this.userCurrentPosition==null){
         this.displayMapError('Cannot find location. Turn on GPS to use Tag Trip services!')
       } else {
-        this.trip = true;
       this.directionsDisplay.setMap(this.map)
       this.calculateAndDisplayRoute();
       }
@@ -98,6 +95,7 @@ ionViewDidEnter() {
       
     }
 }
+
 
 calculateAndDisplayRoute() {
 
@@ -112,8 +110,7 @@ calculateAndDisplayRoute() {
       travelMode: google.maps.TravelMode.WALKING
     }, (response, status) => {
       if (status === 'OK') {
-        this.directionsDisplay.setDirections(response);
-        this.directionsDisplay.setPanel(this.directionsPanel.nativeElement);
+        this.directionsDisplay.setDirections(response); 
       } else {
         window.alert('Directions request failed due to ');
       }
