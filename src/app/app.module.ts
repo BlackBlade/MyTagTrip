@@ -24,7 +24,7 @@ import { Api } from '../providers/api';
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
-import { CityPage } from "../pages/city/city";
+//import { CityPage } from "../pages/city/city";
 import { PoiPage } from "../pages/poi/poi";
 import { SearchcityPage } from "../pages/searchcity/searchcity";
 import { NewtagPage } from "../pages/newtag/newtag";
@@ -69,7 +69,7 @@ let pages = [
   TagTripPage,
   ProfilePage,
   SearchpoiPage,
-  CityPage,
+//  CityPage,
   PoiPage,
   SearchcityPage,
   AddtagPage,

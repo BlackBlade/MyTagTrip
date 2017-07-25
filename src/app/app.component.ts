@@ -12,7 +12,7 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { TagTripPage } from "../pages/tagtrip/tagtrip";
 import { ProfilePage } from "../pages/profile/profile";
 import { Settings } from '../providers/providers';
-import { CityPage } from "../pages/city/city";
+//import { CityPage } from "../pages/city/city";
 import { PoiPage } from "../pages/poi/poi";
 import { SearchpoiPage } from "../pages/searchpoi/searchpoi";
 import { SearchcityPage } from "../pages/searchcity/searchcity";
