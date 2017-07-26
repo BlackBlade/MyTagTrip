@@ -3,5 +3,10 @@ page-tagtrip {
     width: 100%;
     height: 70%;
   }
-
+ion-card {
+            max-height: 150px;
+            overflow: scroll;
+            position: absolute;
+            z-index: 1;
+        }
 }

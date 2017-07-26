@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
 
-//import { ItemDetailPage } from '../item-detail/item-detail';
 import { SearchpoiPage } from "../searchpoi/searchpoi";
 import { Item } from '../../models/item';
 import { PoiPage } from "../poi/poi";
-import { Items } from '../../providers/providers';
 import firebase from 'firebase';
 
 @Component({
@@ -19,7 +17,7 @@ export class SearchcityPage {
   public poiList:Array<any>;
   public loadedPoiList:Array<any>;
   public poiRef:firebase.database.Reference;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items,
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
   public menuCtrl: MenuController) { 
 
     /*var tagData2 = {

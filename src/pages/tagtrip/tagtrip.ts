@@ -17,8 +17,10 @@ declare var google: any;
 export class TagTripPage {
   username:any;
    @ViewChild('map') mapElement: ElementRef;
+   @ViewChild('directionsPanel') directionsPanel: ElementRef;
    map: any;
    title: string;
+   set:boolean;
   public userCurrentPosition: LatLng;
   directions= [];
   directionsService = new google.maps.DirectionsService();
@@ -88,7 +90,9 @@ ionViewDidEnter() {
       if (this.userCurrentPosition==null){
         this.displayMapError('Cannot find location. Turn on GPS to use Tag Trip services!')
       } else {
+        this.set=false;
       this.directionsDisplay.setMap(this.map)
+      this.directionsDisplay.setPanel(this.directionsPanel.nativeElement);
       this.calculateAndDisplayRoute();
       }
       
@@ -96,6 +100,19 @@ ionViewDidEnter() {
     }
 }
 
+showToast(){
+  
+    var x = document.getElementById('dir')
+    if(x.style.display =='none'){
+        x.style.display = 'block'
+    } else {
+      x.style.display = 'none'
+    }
+    
+  
+   
+   
+}
 
 calculateAndDisplayRoute() {
 

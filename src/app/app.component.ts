@@ -10,9 +10,6 @@ import { SignupPage } from '../pages/signup/signup';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { TagTripPage } from "../pages/tagtrip/tagtrip";
-import { ProfilePage } from "../pages/profile/profile";
-import { Settings } from '../providers/providers';
-//import { CityPage } from "../pages/city/city";
 import { PoiPage } from "../pages/poi/poi";
 import { SearchpoiPage } from "../pages/searchpoi/searchpoi";
 import { SearchcityPage } from "../pages/searchcity/searchcity";
@@ -34,7 +31,7 @@ export class MyApp {
     {title: 'Search P.O.I.', component: SearchcityPage}
   ]
 
-  constructor( private platform: Platform, settings: Settings, private config: Config, 
+  constructor( private platform: Platform, private config: Config, 
     private statusBar: StatusBar, private splashScreen: SplashScreen, public api:Api, public alertCtrl:AlertController) {
   }
 

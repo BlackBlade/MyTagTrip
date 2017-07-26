@@ -3,7 +3,6 @@ import { NavController, ToastController, MenuController, Platform } from 'ionic-
 import { Observable } from 'rxjs/Observable';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TagTripPage } from "../tagtrip/tagtrip";
-import { User } from '../../providers/user';
 import { Api } from '../../providers/api';
 
 

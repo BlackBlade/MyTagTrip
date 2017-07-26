@@ -8,7 +8,7 @@ import { GoogleMaps, GoogleMap, GoogleMapsEvent, LatLng, CameraPosition,MarkerOp
 import {TagTripPage} from '../tagtrip/tagtrip'
 import { Item } from '../../models/item';
 import { RouteDisplay } from "../routedisplaypage/routedisplaypage";
-import { Items } from '../../providers/providers';
+//import { Items } from '../../providers/providers';
 import firebase from 'firebase';
 
 declare var google: any;
@@ -34,7 +34,7 @@ export class ChoosetagsPage {
   userCurrentPosition : LatLng;
 
   public keyss = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items, public loading: LoadingController
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loading: LoadingController
   ,public toastCtrl: ToastController) {
 
     this.loader = loading.create({

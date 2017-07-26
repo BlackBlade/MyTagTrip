@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { App, NavController, NavParams } from 'ionic-angular';
 
-//import { ItemDetailPage } from '../item-detail/item-detail';
 
 import { Item } from '../../models/item';
 import { PoiPage } from "../poi/poi";
-import { Items } from '../../providers/providers';
 import firebase from 'firebase';
 
 @Component({
@@ -23,7 +21,7 @@ export class SearchpoiPage {
   cityname: any;
   poiKey:any;
   public keyss = [];
-  constructor(public _app: App, public navCtrl: NavController, public navParams: NavParams, public items: Items) { 
+  constructor(public _app: App, public navCtrl: NavController, public navParams: NavParams) { 
 
     this.city = navParams.get('reference')
     this.cityname = this.city.name;

@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController, MenuController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-//import { MainPage } from '../../pages/pages';
 import { TagTripPage } from '../tagtrip/tagtrip';
-import { User } from '../../providers/user';
 import { Api } from '../../providers/api';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -33,7 +31,7 @@ export class SignupPage {
 
 
   constructor(public navCtrl: NavController,
-    public user: User,
+    //public user: User,
     public toastCtrl: ToastController,
     public api : Api,
     public menuCtrl: MenuController,

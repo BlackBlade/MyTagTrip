@@ -18,13 +18,9 @@ import { SignupPage } from '../pages/signup/signup';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { TagTripPage } from "../pages/tagtrip/tagtrip";
-import { ProfilePage } from "../pages/profile/profile";
 import { CitytripPage} from '../pages/citytrip/citytrip';
 import { Api } from '../providers/api';
 import { Items } from '../mocks/providers/items';
-import { Settings } from '../providers/settings';
-import { User } from '../providers/user';
-//import { CityPage } from "../pages/city/city";
 import { PoiPage } from "../pages/poi/poi";
 import { SearchcityPage } from "../pages/searchcity/searchcity";
 import { NewtagPage } from "../pages/newtag/newtag";
@@ -42,12 +38,12 @@ import { ChoosetagsPage } from '../pages/choosetags/choosetags';
 
 export function provideSettings(storage: Storage) {
   
-  return new Settings(storage, {
+  /*return new Settings(storage, {
     option1: true,
     option2: 'Ionitron J. Framework',
     option3: '3',
     option4: 'Hello'
-  });
+  });*/
 }
 
 export const firebaseConfig = {
@@ -67,9 +63,7 @@ let pages = [
   TutorialPage,
   WelcomePage,
   TagTripPage,
-  ProfilePage,
   SearchpoiPage,
-//  CityPage,
   PoiPage,
   SearchcityPage,
   AddtagPage,
@@ -90,15 +84,12 @@ export function entryComponents() {
 export function providers() {
   return [
     Api,
-    Items,
-    User,
     Camera,
     GoogleMaps,
     SplashScreen,
     StatusBar,
     Geolocation,
 
-    { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ];
@@ -112,13 +103,6 @@ export function providers() {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    /* TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [Http]
-      }
-    }), */
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
