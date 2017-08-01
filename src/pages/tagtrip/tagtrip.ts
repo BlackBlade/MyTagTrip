@@ -63,7 +63,7 @@ ionViewDidEnter() {
   loadMap() {
 
     if(this.directions == null){
-      this.title = "Welcome " + this.username + " to My Tag trip!"
+      this.title = "My Tag Trip"
       let currentPosition: LatLng;
         this.geolocation.getCurrentPosition().then((resp) => {
            currentPosition = new LatLng(resp.coords.latitude, resp.coords.longitude);

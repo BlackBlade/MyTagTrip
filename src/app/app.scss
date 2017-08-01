@@ -14,3 +14,79 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+@import url('https://fonts.googleapis.com/css?family=Lobster|Acme');
+
+.righteous {
+    font-family: 'righteous';
+}
+
+ion-content {
+    font-size: 14px
+}
+
+ion-header{
+    background-color: #EAF2FF;
+    -webkit-text-fill-color: #0A318A;
+}
+
+header {
+    background-color: #ECF2FF
+}
+ion-input {
+  border-radius: 3px;
+  border: 1px #ddd;
+  color: secondary;
+  -webkit-text-fill-color: secondary;
+  font-size: 16px;
+  padding: 2px 2px;
+  display: inline-block;
+  outline: 0;
+}
+
+body,p,ion-item,ion-title,ion-content, {
+    font-family: 'Lobster', cursive;
+}
+
+button {
+font-family: 'Acme', sans-serif;
+}
+
+@-webkit-keyframes animateInPrimary {
+  0% {
+    -webkit-transform: translate3d(-100%,0,0);
+  }
+ 
+  100% {
+    -webkit-transform: translate3d(0,0,0);
+  }
+}
+ 
+@-webkit-keyframes animateInSecondary{
+ 
+  0% {
+    opacity: 0;
+  }
+ 
+  50% {
+    opacity: 0;
+  }
+ 
+  100% {
+    opacity: 1;
+  }
+}
+ 
+.animate-in-primary {
+    -webkit-animation: animateInPrimary;
+    animation: animateInPrimary;
+    -webkit-animation-duration: 750ms;
+    animation-duraton: 750ms;
+}
+ 
+.animate-in-secondary {
+    -webkit-animation: animateInSecondary ease-in 1;
+    animation: animateInSecondary ease-in 1;
+    -webkit-animation-duration: 750ms;
+    animation-duraton: 750ms;
+}
+

@@ -4,7 +4,7 @@
    <!-- <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>-->
-    <ion-title>Search Point of interest ({{cityname}})</ion-title>
+    <ion-title>Search P.O.I. ({{cityname}})</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,8 +15,8 @@
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
      <ion-scroll style="width:100%;height:70vh" scrollY="true">
   <ion-list>
-  <ion-item *ngFor="let poi of poiList; let i = index" (click)="openPage(poi, i)">
-    <ion-avatar item-start>
+  <ion-item *ngFor="let poi of poiList; let i = index" (click)="openPage(poi, i)" class="animate-in-secondary">
+    <ion-avatar class="animate-in-primary" item-start>
       <img src={{poi.imageURL}}>
     </ion-avatar>
     <h2> {{ poi.name }} </h2>

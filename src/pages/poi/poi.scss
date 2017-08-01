@@ -12,6 +12,7 @@ page-poi {
 }
 
 .circle-pic{
+    @extend .animate-in-primary;
     width:200px;
     height:200px;
     -webkit-border-radius: 100%;

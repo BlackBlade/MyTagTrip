@@ -76,7 +76,7 @@ export class MyApp {
       res.subscribe(res => {
       if (res instanceof Error){
       } else {
-          this.nav.push(TutorialPage);
+          this.nav.setRoot(TutorialPage);
 
       }
     })

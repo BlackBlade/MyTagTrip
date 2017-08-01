@@ -20,73 +20,7 @@ export class SearchcityPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, 
   public menuCtrl: MenuController) { 
 
-    /*var tagData2 = {
-      name: "Open air"
-    }
-
-    var key = firebase.database().ref().child('tags').push().key;
-    var updates = {};
-    updates['/tags/'+key] = tagData2;
-    firebase.database().ref().update(updates);*/
-    /*var tagData = {
-      name: "Fountain"
-    }
-
-    var tagData2 = {
-      name: "Square"
-    }
-
-    var key = firebase.database().ref().child('tags').push().key;
-    var key2 = firebase.database().ref().child('tags').push().key;
-    var uid = '-KmuR5c78zpcxOw6t7he' //Piazza del popolo
-    var updates = {};
-    updates['/tags/'+key] = tagData;
-    updates['/pois/'+ uid + '/tags/' + key] = "true";
-    updates['/tags/'+key2] = tagData2;
-    updates['/pois/'+ uid + '/tags/' + key2] = "true";*/
-
-    //firebase.database().ref().update(updates);
-    /*var poiData = {
-      name: "Rocca Malatestiana",
-      imageURL: "http://i.imgur.com/64m0kOU.jpg",
-      city: "Cesena",
-      tags: {}
-    }
-
-    var poiData2 = {
-      name: "Chiostro San Francesco",
-      imageURL: "http://i.imgur.com/D0yYGWN.jpg",
-      city: "Cesena",
-      tags: {}
-    }
-
-    var poiData3 = {
-      name: "Cattedrale San Giovanni",
-      imageURL: "http://i.imgur.com/0ZcoM9P.jpg",
-      city: "Cesena",
-      tags: {}
-    }
-
-    var key = firebase.database().ref().child('pois').push().key;
-    var key2 = firebase.database().ref().child('pois').push().key;
-    var key3 = firebase.database().ref().child('pois').push().key;
-    var uid = '-KmuNE2Ku5VXyNE-sum2' //Cesena
-    var updates = {};
-    updates['/pois/'+key] = poiData;
-    updates['/city/'+ uid + '/pois/' + key] = "true";
-    updates['/pois/'+key2] = poiData2;
-    updates['/city/'+ uid + '/pois/' + key2] = "true";
-    updates['/pois/'+key3] = poiData3;
-    updates['/city/'+ uid + '/pois/' + key3] = "true";
-    firebase.database().ref().update(updates);*/
-
-    /*var key = firebase.database().ref().child('city').push().key;
-    firebase.database().ref('city/'+key).set({
-        name: "Roma",
-        lat : 41.90278349999999,
-        lng: 12.496365500000024,
-        pois: {}
-    });*/
+    
     this.poiRef = firebase.database().ref('/city/');
 
     //creo la lista di points of interests
