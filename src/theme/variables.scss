@@ -1,7 +1,6 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
 $font-path: "../assets/fonts";
-
 @import "ionic.globals";
 
 
@@ -12,11 +11,11 @@ $font-path: "../assets/fonts";
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-$text-color:        #000B23;
-$background-color:  #F3F6FC;
+$text-color:        #002C73;
+$background-color:  #ECF2FF;
 
 
-// Named Color Variables
+// Named Color Variables 
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
 // It's highly recommended to change the default colors
@@ -32,9 +31,17 @@ $colors: (
   dark:       #222
 );
 
-$list-ios-activated-background-color: #498CF4;
-$list-md-activated-background-color: #498CF4;
-$list-wp-activated-background-color: #498CF4;
+$list-md-activated-background-color: primary;
+$list-background-color: $background-color;
+$action-sheet-md-title-font-size:	15px;
+$button-md-font-size: 1.3rem;
+$button-md-font-weight: 200;
+$checkbox-md-icon-checkmark-color: dark;
+$checkbox-md-icon-background-color-on: light;
+$checkbox-md-icon-border-width: 1.5px;
+$checkbox-md-icon-border-style: groove;
+$checkbox-md-icon-checkmark-width: 1px;
+
 
 // App iOS Variables
 // --------------------------------------------------
